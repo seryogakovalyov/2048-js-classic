@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<h1>2048</h1>
+
+<div id="hud">
+    <div class="scores">
+        <div class="score-box">
+            <div class="label">Score</div>
+            <div class="value" id="score">0</div>
+        </div>
+        <div class="score-box">
+            <div class="label">Best</div>
+            <div class="value" id="best">0</div>
+        </div>
+    </div>
+    <button id="restart" aria-label="Start a new game">Restart</button>
+</div>
+
+<div id="game">
+    <div id="message" class="message"></div>
+    <div id="grid"></div>
+</div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

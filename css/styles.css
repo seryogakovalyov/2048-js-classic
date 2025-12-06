@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #faf8ef;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 0 0 6px 0;
+}
+
+#hud {
+    width: min(92vw, 420px);
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    }
+
+.scores {
+    display: flex;
+    gap: 10px;
+}
+
+.score-box {
+    background: #bbada0;
+    color: #f9f6f2;
+    padding: 8px 12px;
+    border-radius: 4px;
+    min-width: 90px;
+}
+
+.score-box .label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.score-box .value {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+#restart {
+    background: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#restart:hover {
+    background: #9f8b76;
+}
+
+#game {
+    position: relative;
+    width: min(100vw, 420px);
+    margin: 0 auto;
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
+#grid {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin: 10px auto 0 auto;
+    background: #bbada0;
+    padding: 10px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tiles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.message {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(238, 228, 218, 0.8);
+    color: #776e65;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.message.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 520px) {
+    body {
+        padding-top: 10px;
+    }
+    #hud {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .scores {
+        justify-content: center;
+    }
+    #restart {
+        width: 100%;
+    }
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    background: #cdc1b4;
+    border-radius: 3px;
+}
+
+.tile {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 3px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #eee4da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease-in-out;
+    transform: translate(var(--x, 0px), var(--y, 0px)) scale(1);
+}
+
+.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 22px;
+}
+
+.tile-2048 {
+    background: #edc22e;
+    color: #f9f6f2;
+    font-size: 22px;
+}
+
+.tile-super {
+    background: #3c3a32;
+    color: #f9f6f2;
+    font-size: 20px;
+}
+
+.tile.new {
+    animation: pop 0.2s ease-out;
+}
+
+.tile.merge {
+    animation: pop 0.22s ease-in-out 0.18s forwards;
+}
+
+@keyframes pop {
+    0% { transform: translate(var(--x, 0px), var(--y, 0px)) scale(0.6); }
+    60% { transform: translate(var(--x, 0px), var(--y, 0px)) scale(1.1); }
+    100% { transform: translate(var(--x, 0px), var(--y, 0px)) scale(1); }
+}

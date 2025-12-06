@@ -1,0 +1,6 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Dependency caches
+node_modules/
